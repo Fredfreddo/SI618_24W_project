@@ -7552,7 +7552,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Board games have a long history, and are still evolving and immensely popular among modern players<a href="#reference">1</a>. Many players have rated board games on online platforms, which give us access to measure how popular and appreciated by the players. Our motivation stems from the desire to delve deeper into the factors that contribute to the success and popularity of board games. By analyzing data from over 20,000 board games, we aim to unlock insights into what makes certain games stand out among the rest. Specifically, we aim to explore the following questions:</p>
+<p>Board games have a long history, and are still evolving and immensely popular among modern players <a href="#reference"><strong><font color="red">1</font></strong></a>. Many players have rated board games on online platforms, which give us access to measure how popular and appreciated by the players. Our motivation stems from the desire to delve deeper into the factors that contribute to the success and popularity of board games. By analyzing data from over 20,000 board games, we aim to unlock insights into what makes certain games stand out among the rest. Specifically, we aim to explore the following questions:</p>
 <ul>
 <li>What characteristics a board game has?</li>
 <li>What are the measurements for a board game's popularity and how well it is appreciated by its players?</li>
@@ -7581,7 +7581,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The data files we use come from <a href="https://www.kaggle.com/datasets/joebeachcapital/board-games">kaggle</a>. The two datasets, <code>ratings.csv</code> and <code>details.csv</code>, according to kaggle page description, are acquired from <a href="https://www.boardgamegeek.com/">boardgamegeek.com</a>, which is an online forum for board gaming hobbyists and a game database that holds reviews, images and videos for over 125,600 different tabletop games, including European-style board games, wargames, and card games[1].</p>
+<p>The data files we use come from <a href="https://www.kaggle.com/datasets/joebeachcapital/board-games">kaggle</a> <a href="#reference"><strong><font color="red">2</font></strong></a>. The two datasets, <code>ratings.csv</code> and <code>details.csv</code>, according to kaggle page description, are acquired from <a href="https://www.boardgamegeek.com/">boardgamegeek.com</a>, which is an online forum for board gaming hobbyists and a game database that holds reviews, images and videos for over 125,600 different tabletop games, including European-style board games, wargames, and card games <a href="#reference"><strong><font color="red">3</font></strong></a>.</p>
 <p><code>ratings.csv</code> contains the ratings information of each board game, and <code>details.csv</code> contains the detailed information, such as publish year, player info, and design info of the board games. By combining these two datasets, we will be able to study the relationship between the various factors of the board games and their ratings and popularity.</p>
 </div>
 </div>
@@ -7604,6 +7604,196 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Based on the description on kaggle, the two datasets have following information:</p>
+<p><code>ratings.csv</code>:</p>
+<table>
+<thead>
+<tr>
+<th>variable</th>
+<th>class</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>num</td>
+<td>double</td>
+<td>Game number</td>
+</tr>
+<tr>
+<td>id</td>
+<td>double</td>
+<td>Game ID</td>
+</tr>
+<tr>
+<td>name</td>
+<td>character</td>
+<td>Game name</td>
+</tr>
+<tr>
+<td>year</td>
+<td>double</td>
+<td>Game year</td>
+</tr>
+<tr>
+<td>rank</td>
+<td>double</td>
+<td>Game rank</td>
+</tr>
+<tr>
+<td>average</td>
+<td>double</td>
+<td>Average rating</td>
+</tr>
+<tr>
+<td>bayes_average</td>
+<td>double</td>
+<td>Bayes average rating</td>
+</tr>
+<tr>
+<td>users_rated</td>
+<td>double</td>
+<td>Users rated</td>
+</tr>
+<tr>
+<td>url</td>
+<td>character</td>
+<td>Game url</td>
+</tr>
+<tr>
+<td>thumbnail</td>
+<td>character</td>
+<td>Game thumbnail</td>
+</tr>
+</tbody>
+</table>
+<p><code>details.csv</code>:</p>
+<table>
+<thead>
+<tr>
+<th>variable</th>
+<th>class</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>num</td>
+<td>double</td>
+<td>Game number</td>
+</tr>
+<tr>
+<td>id</td>
+<td>double</td>
+<td>Game ID</td>
+</tr>
+<tr>
+<td>primary</td>
+<td>character</td>
+<td>Primary name</td>
+</tr>
+<tr>
+<td>description</td>
+<td>character</td>
+<td>Description of game</td>
+</tr>
+<tr>
+<td>yearpublished</td>
+<td>double</td>
+<td>Year published</td>
+</tr>
+<tr>
+<td>minplayers</td>
+<td>double</td>
+<td>Min n of players</td>
+</tr>
+<tr>
+<td>maxplayers</td>
+<td>double</td>
+<td>Max n of players</td>
+</tr>
+<tr>
+<td>playingtime</td>
+<td>double</td>
+<td>Playing time in minutes</td>
+</tr>
+<tr>
+<td>minplaytime</td>
+<td>double</td>
+<td>Min play time</td>
+</tr>
+<tr>
+<td>maxplaytime</td>
+<td>double</td>
+<td>Max plat tome</td>
+</tr>
+<tr>
+<td>minage</td>
+<td>double</td>
+<td>minimum age</td>
+</tr>
+<tr>
+<td>boardgamecategory</td>
+<td>character</td>
+<td>Category</td>
+</tr>
+<tr>
+<td>boardgamemechanic</td>
+<td>character</td>
+<td>Mechanic</td>
+</tr>
+<tr>
+<td>boardgamefamily</td>
+<td>character</td>
+<td>Board game family</td>
+</tr>
+<tr>
+<td>boardgameexpansion</td>
+<td>character</td>
+<td>Expansion</td>
+</tr>
+<tr>
+<td>boardgameimplementation</td>
+<td>character</td>
+<td>Implementation</td>
+</tr>
+<tr>
+<td>boardgamedesigner</td>
+<td>character</td>
+<td>Designer</td>
+</tr>
+<tr>
+<td>boardgameartist</td>
+<td>character</td>
+<td>Artist</td>
+</tr>
+<tr>
+<td>boardgamepublisher</td>
+<td>character</td>
+<td>Publisher</td>
+</tr>
+<tr>
+<td>owned</td>
+<td>double</td>
+<td>Num owned</td>
+</tr>
+<tr>
+<td>trading</td>
+<td>double</td>
+<td>Num trading</td>
+</tr>
+<tr>
+<td>wanting</td>
+<td>double</td>
+<td>Num wanting</td>
+</tr>
+<tr>
+<td>wishing</td>
+<td>double</td>
+<td>Num wishing</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -7615,16 +7805,6 @@ a.anchor-link {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="Data-Manipulation">Data Manipulation<a class="anchor-link" href="#Data-Manipulation">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
@@ -8135,7 +8315,9 @@ memory usage: 3.8+ MB
 <strong>Reference</strong>
 </a>
 <ul>
-<li>[1] <a href="https://en.wikipedia.org/wiki/BoardGameGeek">https://en.wikipedia.org/wiki/BoardGameGeek</a></li>
+<li>[1] <a href="https://gitnux.org/board-game-popularity-statistics/">https://gitnux.org/board-game-popularity-statistics/</a></li>
+<li>[2] <a href="https://www.kaggle.com/datasets/joebeachcapital/board-games/data">https://www.kaggle.com/datasets/joebeachcapital/board-games/data</a></li>
+<li>[3] <a href="https://en.wikipedia.org/wiki/BoardGameGeek">https://en.wikipedia.org/wiki/BoardGameGeek</a></li>
 </ul>
 </div>
 </div>

@@ -7504,6 +7504,21 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>How to use the Table of Contents:</p>
+<ul>
+<li>Click the links in the ToC: lead you to the designated sections</li>
+<li>Click the titles of the sections in the body of the report: lead you back to the ToC</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>Table of contents</strong><a id="toc0_"></a></p>
 <ul>
 <li><a href="#toc1_">SI618 Project Part 2: Analysis</a></li>
@@ -8499,6 +8514,38 @@ Name: description, dtype: object</pre>
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">ready_data</span><span class="o">.</span><span class="n">yearpublished</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>yearpublished
+2017    1325
+2018    1321
+2016    1291
+2019    1258
+2015    1147
+Name: count, dtype: int64</pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
@@ -8506,7 +8553,7 @@ Name: description, dtype: object</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The year with most games published is 2017, while the top 10 years constitute the entire 2010s.</p>
+<p>The year with most games published is 2017, while the top 5 years are all in the 2010s.</p>
 </div>
 </div>
 </div>
@@ -10143,6 +10190,17 @@ mean of average ratings for games published after 2011.0 is: 6.724880216046693
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>The correlations are quite visible. Also we may see popularity variables have large outliers.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="Difference-discovered-in-t-test"><a id="toc2_4_2_"></a><a href="#toc0_">Difference discovered in t test</a><a class="anchor-link" href="#Difference-discovered-in-t-test">¶</a></h3>
 </div>
 </div>
@@ -11251,7 +11309,47 @@ C:\Users\yuanf\AppData\Local\Temp\ipykernel_41132\930307160.py:2: FutureWarning:
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Through our analysis, we were able to get some insight into our original research questions:</p>
+<ul>
+<li>What characteristics a board game has?</li>
+<li>What are the measurements for a board game's popularity and how well it is appreciated by its players?</li>
+<li>What factors, like playing time, minimum age, and number of players, affect the popularity of board games?</li>
+<li>What factors, like category and theme, affect the rating of board games?</li>
+<li>Are popular board games more highly rated, and vise versa?</li>
+</ul>
+<p>Through the descriptive statistics, we can find that the board games have both numerical and categorical features, and there are ownership/trading numbers demonstrating each game's popularity, as well as average ratings demonstrating the appreciation of players.</p>
+<p>Through inferential statistics such as linear correlation, we found that although there is not a high correlation between game ownership and average rating, the correlation with Bayesian rating mean is rather high, which indicates the number of player ratings may have been considered in the Bayesian statistic. We show the relationship between factors and select some representative fields for further analysis. We then conducted significance test on them to show whether they statistically influence the popularity and rating of the games. We have found that the year of publishing has a significant influence on both game popularity and rating: popularity varies over time, while newer games tend to have higher rating; While player numbers does not have a significant influence on game rating, it does affect game popularity, as games with lower player numbers tend to be more popular. Game categories, such as Card Game vs non-Card Game, does have a influence on game rating. Our graphical analysis further visualize these trends.</p>
+<p>By combining the two original datasets, we are now able to analyze how the features of the game affect the game's popularity and rating. Since they were separate in the two original datasets, this would not have been possible with them in isolation.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="Reflection"><a id="toc2_8_"></a><a href="#toc0_">Reflection</a><a class="anchor-link" href="#Reflection">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>The dataset we chose was rather large, with over 20,000 entries and around 40 combined fields. Despite the efforts we have made in the first part to merge and clean the data, we still encountered some challenges during our second part analysis. For example, the existence of unreasonable values in fields like min and max players/playing time. It was difficult to validate individually and filter them out, so we decided to acknowledge their presence. Also, the continuous nature of the numerical features and the overlapping nature of categorical features meant there was not a obvious way of doing comparative analysis on the data. Nevertheless, we still came up with ways to dissect the data and found some significant trends.</p>
+<p>The limitation of our analysis come from the presence of unreasonable data, which affects the validity of our numerical analysis to some extent; also, we have not included some fields of data that are relatively hard to extract for our analysis. Also, the size of the data prevents us from analyzing all variables and potential combinations, our report was dedicated to cover the most representative columns of different types of characteristics of the board games. For further research and improvements, we may consider utilizing more robust methods for data manipulation to get more comprehensive results.</p>
+<p>In future machine learning task, we may need to address the following issues in advance:</p>
+<ul>
+<li>Use techniques such as regression to identify outliers and potential unreasonable/wrong data and impute more reasonable ones;</li>
+<li>For variables like published year, as we found out that dividing the data by it could show significant difference in average ratings, we may need to decide whether to treat it as numeric or categorical variable;</li>
+<li>How to treat lists and if we need to invent new variables;</li>
+<li>What variables are suited to be used for stratified data splitting;</li>
+</ul>
 </div>
 </div>
 </div>

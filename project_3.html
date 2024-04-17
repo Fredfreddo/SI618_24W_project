@@ -7504,6 +7504,22 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Team members:</p>
+<ul>
+<li>Keqing Lu (keqinglu)</li>
+<li>Xiyuan Wang (denniswx)</li>
+<li>Fangqing Yuan (fangqing)</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>Table of contents</strong><a id="toc0_"></a></p>
 <ul>
 <li><a href="#toc1_">SI618 Project 3 Classification</a></li>
@@ -7533,6 +7549,11 @@ a.anchor-link {
 <li><a href="#toc2_6_6_">Random Forest</a></li>
 <li><a href="#toc2_6_7_">XGBOOST</a></li>
 <li><a href="#toc2_6_8_">Ensemble Model</a></li>
+<li><a href="#toc2_6_9_">Missclassification</a><ul>
+<li><a href="#toc2_6_9_1_">False Positive:</a></li>
+<li><a href="#toc2_6_9_2_">False negatives:</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#toc2_7_">Interpretation, Conclusion, Reflection</a></li>
@@ -7547,22 +7568,6 @@ a.anchor-link {
 	maxLevel=6
 	/vscode-jupyter-toc-config -->
 <!-- THIS CELL WILL BE REPLACED ON TOC UPDATE. DO NOT WRITE YOUR TEXT IN THIS CELL -->
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Team members:</p>
-<ul>
-<li>Keqing Lu (keqinglu)</li>
-<li>Xiyuan Wang (denniswx)</li>
-<li>Fangqing Yuan (fangqing)</li>
-</ul>
 </div>
 </div>
 </div>
@@ -10451,6 +10456,540 @@ Recall     0.843052  0.830156
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>As the random forest and xgboost perform better than the logistic regression, we may expect the ensemble model having similar performance with random forest and xgboost on test set.</p>
 <p>We may see a quite improvement in precision.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Missclassification"><a id="toc2_6_9_"></a><a href="#toc0_">Missclassification</a><a class="anchor-link" href="#Missclassification">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="False-Positive:"><a id="toc2_6_9_1_"></a><a href="#toc0_">False Positive:</a><a class="anchor-link" href="#False-Positive:">¶</a></h4>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># get missclassified false positive in all models</span>
+<span class="n">logistic_fp</span> <span class="o">=</span> <span class="n">test_data</span><span class="p">[(</span><span class="n">best_logistic</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_X</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">test_y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)]</span>
+<span class="n">knn_fp</span> <span class="o">=</span> <span class="n">test_data</span><span class="p">[(</span><span class="n">best_knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_X</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">test_y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)]</span>
+<span class="n">rf_fp</span> <span class="o">=</span> <span class="n">test_data</span><span class="p">[(</span><span class="n">best_rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_X</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">test_y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)]</span>
+<span class="n">xgb_fp</span> <span class="o">=</span> <span class="n">test_data</span><span class="p">[(</span><span class="n">best_xgb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_X</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">test_y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)]</span>
+<span class="n">ensemble_fp</span> <span class="o">=</span> <span class="n">test_data</span><span class="p">[(</span><span class="n">ensemble</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_X</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">test_y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)]</span>
+<span class="c1"># get the intersaction of all false positives (code helped by copilot)</span>
+<span class="n">all_fp</span> <span class="o">=</span> <span class="n">logistic_fp</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">knn_fp</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">rf_fp</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">xgb_fp</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">ensemble_fp</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">core_data</span><span class="p">[</span><span class="s1">'average'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ready_data</span><span class="p">[</span><span class="s1">'average'</span><span class="p">]</span>
+<span class="n">core_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">all_fp</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'average'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>id</th>
+<th>7963</th>
+<th>11950</th>
+<th>10946</th>
+<th>10962</th>
+<th>18613</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>name</th>
+<td>Clash of Steel</td>
+<td>Monopoly: Marvel Comics</td>
+<td>The American Civil War</td>
+<td>Smugglers of the Galaxy</td>
+<td>Khan: The Rise of the Mongol Empire, A.D. 1206...</td>
+</tr>
+<tr>
+<th>yearpublished</th>
+<td>1984</td>
+<td>1999</td>
+<td>1974</td>
+<td>2004</td>
+<td>2005</td>
+</tr>
+<tr>
+<th>minplayers</th>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<th>maxplayers</th>
+<td>2.0</td>
+<td>0.0</td>
+<td>2.0</td>
+<td>6.0</td>
+<td>2.0</td>
+</tr>
+<tr>
+<th>playingtime</th>
+<td>180</td>
+<td>180</td>
+<td>180</td>
+<td>120</td>
+<td>180</td>
+</tr>
+<tr>
+<th>minage</th>
+<td>12</td>
+<td>8</td>
+<td>12</td>
+<td>12</td>
+<td>12</td>
+</tr>
+<tr>
+<th>category_count</th>
+<td>2.0</td>
+<td>3.0</td>
+<td>4.0</td>
+<td>5.0</td>
+<td>2.0</td>
+</tr>
+<tr>
+<th>family_count</th>
+<td>4.0</td>
+<td>2.0</td>
+<td>3.0</td>
+<td>0.0</td>
+<td>4.0</td>
+</tr>
+<tr>
+<th>mechanic_count</th>
+<td>6.0</td>
+<td>5.0</td>
+<td>7.0</td>
+<td>5.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<th>expansion_count</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<th>implementation_count</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>designer_count</th>
+<td>3.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>2.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<th>publisher_count</th>
+<td>1.0</td>
+<td>1.0</td>
+<td>2.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<th>artist_count</th>
+<td>4.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<th>rate_cat</th>
+<td>Low</td>
+<td>Low</td>
+<td>Low</td>
+<td>Low</td>
+<td>Low</td>
+</tr>
+<tr>
+<th>own+rate</th>
+<td>5.883322</td>
+<td>5.568345</td>
+<td>6.52503</td>
+<td>6.113682</td>
+<td>5.834811</td>
+</tr>
+<tr>
+<th>desired</th>
+<td>3.496508</td>
+<td>3.433987</td>
+<td>4.043051</td>
+<td>4.682131</td>
+<td>3.988984</td>
+</tr>
+<tr>
+<th>is_cardgame</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>is_dicerolling</th>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>average</th>
+<td>5.05</td>
+<td>5.6</td>
+<td>5.64</td>
+<td>5.66</td>
+<td>5.69</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>The above are the 5 most missclassified false positives, where games with low ratings were classified into <code>high</code> class by our models. Notice that in general they are:</p>
+<ul>
+<li>relatively old</li>
+<li>can only serve a relative small amount of players</li>
+<li>have relatively long playing time</li>
+<li>have relatively diverse mechanics</li>
+<li>have medium ownership and popularity</li>
+</ul>
+<p>We may guess it is the published years that confused the model. As except the year, all other major features of them would suggest classify them into <code>high</code> class.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="False-negatives:"><a id="toc2_6_9_2_"></a><a href="#toc0_">False negatives:</a><a class="anchor-link" href="#False-negatives:">¶</a></h4>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># get missclassified false negative in all models</span>
+<span class="n">logistic_fn</span> <span class="o">=</span> <span class="n">test_data</span><span class="p">[(</span><span class="n">best_logistic</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_X</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">test_y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="n">knn_fn</span> <span class="o">=</span> <span class="n">test_data</span><span class="p">[(</span><span class="n">best_knn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_X</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">test_y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="n">rf_fn</span> <span class="o">=</span> <span class="n">test_data</span><span class="p">[(</span><span class="n">best_rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_X</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">test_y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="n">xgb_fn</span> <span class="o">=</span> <span class="n">test_data</span><span class="p">[(</span><span class="n">best_xgb</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_X</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">test_y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="n">ensemble_fn</span> <span class="o">=</span> <span class="n">test_data</span><span class="p">[(</span><span class="n">ensemble</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_X</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">test_y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)]</span>
+<span class="c1"># get the intersaction of all false negatives</span>
+<span class="n">all_fn</span> <span class="o">=</span> <span class="n">logistic_fn</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">knn_fn</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">rf_fn</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">xgb_fn</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">ensemble_fn</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">core_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">all_fn</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">'average'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th>id</th>
+<th>171</th>
+<th>3667</th>
+<th>4120</th>
+<th>2398</th>
+<th>745</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>name</th>
+<td>Chess</td>
+<td>Star Fleet Battle Manual</td>
+<td>King's Court</td>
+<td>Cribbage</td>
+<td>War of Resistance</td>
+</tr>
+<tr>
+<th>yearpublished</th>
+<td>1960</td>
+<td>1977</td>
+<td>1983</td>
+<td>1960</td>
+<td>1998</td>
+</tr>
+<tr>
+<th>minplayers</th>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<th>maxplayers</th>
+<td>2.0</td>
+<td>8.0</td>
+<td>8.0</td>
+<td>4.0</td>
+<td>2.0</td>
+</tr>
+<tr>
+<th>playingtime</th>
+<td>0</td>
+<td>90</td>
+<td>30</td>
+<td>30</td>
+<td>0</td>
+</tr>
+<tr>
+<th>minage</th>
+<td>6</td>
+<td>12</td>
+<td>10</td>
+<td>10</td>
+<td>12</td>
+</tr>
+<tr>
+<th>category_count</th>
+<td>1.0</td>
+<td>3.0</td>
+<td>2.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<th>family_count</th>
+<td>6.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>6.0</td>
+<td>2.0</td>
+</tr>
+<tr>
+<th>mechanic_count</th>
+<td>4.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<th>expansion_count</th>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<th>implementation_count</th>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>designer_count</th>
+<td>1.0</td>
+<td>3.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>2.0</td>
+</tr>
+<tr>
+<th>publisher_count</th>
+<td>9.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>9.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<th>artist_count</th>
+<td>4.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>2.0</td>
+</tr>
+<tr>
+<th>rate_cat</th>
+<td>High</td>
+<td>High</td>
+<td>High</td>
+<td>High</td>
+<td>High</td>
+</tr>
+<tr>
+<th>own+rate</th>
+<td>11.216431</td>
+<td>5.57973</td>
+<td>5.153292</td>
+<td>10.007757</td>
+<td>5.908083</td>
+</tr>
+<tr>
+<th>desired</th>
+<td>6.322565</td>
+<td>4.043051</td>
+<td>3.931826</td>
+<td>5.891644</td>
+<td>4.330733</td>
+</tr>
+<tr>
+<th>is_cardgame</th>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<th>is_dicerolling</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>average</th>
+<td>8.39</td>
+<td>8.1</td>
+<td>7.83</td>
+<td>7.48</td>
+<td>7.46</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Quite like the opposite of the false positives. The false negatives have some typical <code>high</code> class features except that they are quite old games. Remember that in logistic regression <code>yearpublished</code> has a quite large coefficient, and in forest based models it has top importance, meaning the trees may split nodes using year first in many occasions. These small saount of "old nice games" and "new lousy games" caused the missclassification.</p>
 </div>
 </div>
 </div>
